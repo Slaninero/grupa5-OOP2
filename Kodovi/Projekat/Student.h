@@ -18,11 +18,13 @@ using std::string;
 class Student
 {
 private:
-	// add required members
+	string firstName;
+	string lastName;
+	string ID;
 
 public:
-	// add required constructors
-
+	Student();
+	Student(string firstName, string lastName, string ID);
 	string get_first_name() const;
 	string get_last_name() const;
 	string get_id() const;
