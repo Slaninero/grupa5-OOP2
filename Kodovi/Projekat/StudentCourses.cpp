@@ -1,9 +1,33 @@
+#include <iostream>
+#include "StudentCourses.h"
 //============================================================================
 // File Name   : StudentCourses.cpp
-// Authors     : You
+// Authors     : Milan Milovanovic
 // Version     : 1.0
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project
 //============================================================================
 
-// Your code starts here
+using namespace std;
+
+StudentCourses::StudentCourses()
+{
+}
+
+StudentCourses::StudentCourses(Student student, Courses courses)
+{
+	student = student;
+	courses = courses;
+}
+
+double StudentCourses::get_final_score()
+{
+	return courses.get_final_score();
+}
+
+void StudentCourses::display()
+{
+	student.display();
+	cout << "Final score: " << courses.get_final_score() << endl;
+	cout << "Grade: " << courses.get_letter_grade() << endl;
+}

@@ -36,6 +36,7 @@ public:
 
 	// utility functions
 	double get_final_score() const;
+	char get_letter_grade() const { return letter_grade; }
 	void display() const;
 	void calc_final_score();
 	void calc_letter_grade();
