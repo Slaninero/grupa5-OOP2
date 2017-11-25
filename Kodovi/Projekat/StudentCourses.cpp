@@ -17,7 +17,5 @@ double StudentCourses::get_final_score()
 
 void StudentCourses::display()
 {
-	student.display();
-	cout << "Final score: " << courses.get_final_score() << endl;
-	cout << "Grade: " << courses.get_letter_grade() << endl;
+	cout << student.get_id() << " " << student.get_first_name() << " " << student.get_last_name() << " " << courses.get_final_score() << " " << courses.get_letter_grade() << endl;
 }
