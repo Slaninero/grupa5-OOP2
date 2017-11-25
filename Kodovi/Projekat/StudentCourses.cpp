@@ -10,16 +10,6 @@
 
 using namespace std;
 
-StudentCourses::StudentCourses()
-{
-}
-
-StudentCourses::StudentCourses(Student student, Courses courses)
-{
-	student = student;
-	courses = courses;
-}
-
 double StudentCourses::get_final_score()
 {
 	return courses.get_final_score();

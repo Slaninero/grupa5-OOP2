@@ -19,8 +19,8 @@ private:
 	Student student;
 	Courses courses;
 public:
-	StudentCourses();
-	StudentCourses(Student student, Courses courses);
+	StudentCourses() {};
+	StudentCourses(Student student, Courses courses) : student(student), courses(courses) {};
 	Student get_student() const { return student; }
 	Courses get_courses() const { return courses; }
 	double get_final_score();
