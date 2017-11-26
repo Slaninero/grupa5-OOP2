@@ -27,7 +27,7 @@ public:
 		InvalidFile() : runtime_error("Invalid input file name") {}
 	};
 
-	enum OPTIONS { INFO = 1, READ_FILE, DISPLAY, DISPLAY_SORTED, HIGHEST, EXIT };
+	enum OPTIONS { INFO = 1, READ_FILE, DISPLAY_ALL, DISPLAY_SORTED, HIGHEST, DISPLAY_ONE, WRITE_FILE, EXIT = 8 };
 
 private:
 	GroupOfStudents gs;
@@ -42,6 +42,7 @@ public:
 	void display_students() const;
 	void display_students_sorted() const;
 	void display_highest_score() const;
+	void write();
 };
 
 #endif /*MENU_H_*/
