@@ -1,3 +1,4 @@
+#include "GroupOfStudents.h"
 //============================================================================
 // File Name   : GroupOfStudents.cpp
 // Authors     : Milan Milovanovic
@@ -7,3 +8,8 @@
 //============================================================================
 
 //  Your code starts here
+
+GroupOfStudents::GroupOfStudents(const vector<StudentCourses>& v)
+{
+	st_vec = v;
+}
