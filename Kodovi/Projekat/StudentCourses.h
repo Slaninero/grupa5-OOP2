@@ -1,6 +1,6 @@
 //============================================================================
 // File Name   : StudentCourses.h
-// Authors     : You
+// Authors     : Milan Milovanovic
 // Version     : 1.0
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project
@@ -15,10 +15,16 @@
 
 class StudentCourses
 {
-	// add required members
+private:
+	Student student;
+	Courses courses;
 public:
-
-	//Student get_student() const { return student; }
+	StudentCourses() {};
+	StudentCourses(Student student, Courses courses) : student(student), courses(courses) {};
+	Student get_student() const { return student; }
+	Courses get_courses() const { return courses; }
+	double get_final_score();
+	void display();
 };
 
 #endif
