@@ -24,8 +24,10 @@ private:
 public:
 	GroupOfStudents() {}
 	GroupOfStudents(const vector< StudentCourses >& v);
-	
-	// add required methods
+	void display();
+	void display_sorted();
+	void display_highest();
+	void write_to_file();
 	const vector<StudentCourses>& get_student_courses() const { return st_vec; }
 };
 
