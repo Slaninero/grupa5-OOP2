@@ -24,11 +24,13 @@ private:
 public:
 	GroupOfStudents() {}
 	GroupOfStudents(const vector< StudentCourses >& v);
-	void display();
-	void display_sorted();
-	void display_highest();
+	void display() const;
+	void display_sorted() const;
+	void display_highest() const;
 	void write_to_file();
 	const vector<StudentCourses>& get_student_courses() const { return st_vec; }
+	void add_member(StudentCourses sc);
 };
+
 
 #endif /*GROUPOFSTUDENTS_H_*/

@@ -1,7 +1,7 @@
 //============================================================================
 // File Name   : Courses.cpp
 // Authors     : You
-// Version     : 1.0
+// Version     : 1.2
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project
 //============================================================================
@@ -65,4 +65,77 @@ void Courses::calc_letter_grade()
 		letter_grade = 'B';
 	else
 		letter_grade = 'A';
+}
+
+istream & operator>>(istream & in, Courses & c)
+{
+	int i = 0;
+	int num = 0;
+
+	while (i < 6) {
+		if (!(in >> num)) {
+			// nije double
+			throw std::invalid_argument("Invalid input format!");
+		}
+		else {
+			if (num < 0 || num > 100) {
+				// nalazi se izvan opsega
+				throw std::invalid_argument("Invalid input format!");
+		}
+			c.homework[i] = num;
+		}
+		i++;
+	}
+
+	if (in.peek() != '\n') {
+		// proverava da li je kraj reda
+		throw std::invalid_argument("Invalid input fomrat!");
+	}
+	
+	i = 0;
+
+	while (i < 4) {
+		if (!(in >> num)) {
+			throw std::invalid_argument("Invalid input format!");
+		}
+		else {
+			if (num < 0 || num > 100) {
+				throw std::invalid_argument("Invalid input format!");
+			}
+			c.test[i] = num;
+		}
+		i++;
+	}
+
+	if (in.peek() != '\n') {
+		throw std::invalid_argument("Invalid input fomrat!");
+	}
+
+	i = 0;
+
+	while (i < 10) {
+		if (!(in >> num)) {
+			throw std::invalid_argument("Invalid input format!");
+		}
+		else {
+			if (num < 0 || num > 100) {
+				throw std::invalid_argument("Invalid input format!");
+			}
+			c.quiz[i] = num;
+		}
+		i++;
+	}
+
+	if (!in.eof() & in.peek() != '\n') {
+		// proverava da li je kraj reda
+		throw std::invalid_argument("Invalid input fomrat!");
+	}
+
+	return in;
+}
+
+ostream & operator<<(ostream & out, Courses& c)
+{
+	out << c.get_final_score() << " " << c.get_letter_grade();
+	return out;
 }
