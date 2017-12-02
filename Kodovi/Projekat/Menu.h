@@ -1,6 +1,6 @@
 //============================================================================
 // File Name   : Menu.h
-// Authors     : You
+// Authors     : Kristina Djereg
 // Version     : 1.0
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project
@@ -27,7 +27,7 @@ public:
 		InvalidFile() : runtime_error("Invalid input file name") {}
 	};
 
-	enum OPTIONS { INFO = 1, READ_FILE, DISPLAY_ALL, DISPLAY_SORTED, HIGHEST, DISPLAY_ONE, WRITE_FILE, EXIT = 8 };
+	enum OPTIONS { INFO = 1, READ_FILE, DISPLAY_ONE,  HIGHEST, DISPLAY_SORTED, DISPLAY_ALL, WRITE_FILE, EXIT = 8 };
 
 private:
 	GroupOfStudents gs;
