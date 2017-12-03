@@ -1,7 +1,7 @@
 //============================================================================
 // File Name   : Courses.h
 // Authors     : You
-// Version     : 1.0
+// Version     : 1.1
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project
 //============================================================================
@@ -13,6 +13,8 @@
 #include <vector>
 
 using std::vector;
+using std::istream;
+using std::ostream;
 
 class Courses
 {
@@ -40,7 +42,13 @@ public:
 	void display() const;
 	void calc_final_score();
 	void calc_letter_grade();
+
+	friend istream& operator>>(istream& in, Courses& c);
 };
+
+istream& operator>>(istream& in, Courses& c);
+ostream& operator<<(ostream& out, Courses& c);
+
 
 
 #endif 
