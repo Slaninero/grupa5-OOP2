@@ -1,7 +1,7 @@
 //============================================================================
 // File Name   : Student.h
 // Authors     : You
-// Version     : 1.0
+// Version     : 1.2
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project
 //============================================================================
@@ -14,6 +14,8 @@
 #include <iostream>
 
 using std::string;
+using std::istream;
+using std::ostream;
 
 class Student
 {
@@ -29,6 +31,11 @@ public:
 	string get_last_name() const;
 	string get_id() const;
 	void display() const;
+
+	friend istream& operator>>(istream& in, Student& s);
 };
+
+istream& operator>>(istream& in, Student& s);
+ostream& operator<<(ostream& out, Student& s);
 
 #endif /*STUDENT_H_*/
