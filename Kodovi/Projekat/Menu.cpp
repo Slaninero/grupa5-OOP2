@@ -38,7 +38,7 @@ void Menu::display_info() const
 
 void Menu::read_students()
 {
-	string path /*= "Test01.txt"*/;
+	string path = "../../Testovi/Test01.txt";
 	ifstream ifs(path);
 
 	if (!ifs) cout << "Unable to open file!" << endl;
@@ -69,7 +69,7 @@ void Menu::display_students() const
 
 void Menu::display_students_sorted() const
 {
-	//gs.display_sorted();
+	gs.display_sorted();
 }
 
 void Menu::display_highest_score() const
