@@ -37,8 +37,11 @@ public:
 		: quiz(q), homework(h), test(t), final_score(0), letter_grade('F') {}
 
 	// utility functions
+	vector<int> get_quiz() { return quiz; };
+	vector<int> get_homework() { return homework; };
+	vector<int> get_test() { return test; };
 	double get_final_score() const;
-	char get_letter_grade() const { return letter_grade; }
+	char get_letter_grade() const;
 	void display() const;
 	void calc_final_score();
 	void calc_letter_grade();
