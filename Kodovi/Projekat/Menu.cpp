@@ -86,6 +86,7 @@ void Menu::display_info() const
 
 void Menu::read_students()
 {
+
 	string path = __argv[1];
 	string file_type = __argv[2];
 	if (file_type == "T") {
@@ -201,7 +202,7 @@ void Menu::display_students() const
 
 void Menu::display_students_sorted() const
 {
-	//gs.display_sorted();
+	gs.display_sorted();
 }
 
 void Menu::display_highest_score() const
