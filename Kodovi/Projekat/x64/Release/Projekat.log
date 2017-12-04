@@ -1,0 +1,12 @@
+﻿  GroupOfStudents.cpp
+  Menu.cpp
+Menu.cpp(33): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+Menu.cpp(38): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+Menu.cpp(43): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  main.cpp
+  Generating code
+  7 of 578 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    22 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Projekat.vcxproj -> E:\Work\c++ - PROJECTS\grupa5-OOP2\Kodovi\x64\Release\Projekat.exe

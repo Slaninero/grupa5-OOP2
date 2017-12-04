@@ -20,6 +20,10 @@ double Courses::get_final_score() const {
 	return final_score;
 }
 
+char Courses::get_letter_grade() const {
+	return letter_grade;
+}
+
 void Courses::display() const {
 	cout << "Quizes : " << endl;
 	for (int i : quiz)
@@ -30,7 +34,7 @@ void Courses::display() const {
 		cout << i << ", ";
 
 	cout << "\nTests" << endl;
-	for (int i : homework)
+	for (int i : test)
 		cout << i << ", ";
 
 	cout << "\n Final grade : " << final_score << endl;
@@ -50,7 +54,7 @@ void Courses::calc_final_score()
 	for (int i : test)
 		test_score += i;
 
-	final_score = (quiz_score / (NUM_QUIZZES * 100)) * 100 * QUIZ_WEIGHT + (homework_score / (NUM_HW * 100)) * 100 * HOMEWORK_WEIGHT + (test_score / (NUM_TESTS * 100)) * 100 * TEST_WEIGHT;
+	final_score = 100 * ((quiz_score * QUIZ_WEIGHT / (NUM_QUIZZES * 100)) + (homework_score * HOMEWORK_WEIGHT / (NUM_HW * 100)) + (test_score * TEST_WEIGHT / ((NUM_TESTS * 100))));
 }
 
 void Courses::calc_letter_grade()
@@ -126,7 +130,7 @@ istream & operator>>(istream & in, Courses & c)
 		i++;
 	}
 
-	if (!in.eof() & in.peek() != '\n') {
+	if (!in.eof() && in.peek() != '\n') {
 		// proverava da li je kraj reda
 		throw std::invalid_argument("Invalid input fomrat!");
 	}
