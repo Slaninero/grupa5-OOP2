@@ -215,3 +215,34 @@ void Menu::write()
 	gs.write_to_file();
 }
 
+void Menu::display_one_stud() const
+{
+	string id;
+	
+	cout << "Unesite id studenta >> ";
+	cin >> id;
+
+	if (is_id_valid(id) == true)
+	{
+		Student s = gs.get_student(id);
+		s.display();
+	}
+	else
+	{
+		cout << "Ne postoji student s tim id-om!" << endl;
+	}
+}
+
+bool Menu::is_id_valid(string id) const
+{
+	vector<StudentCourses> sc = gs.get_student_courses();
+
+	for (int i = 0; i < sc.size(); i++) 
+	{
+		if (sc[i].get_student().get_id() == id)
+		{
+			return true;
+		}
+	}
+	return false;
+}

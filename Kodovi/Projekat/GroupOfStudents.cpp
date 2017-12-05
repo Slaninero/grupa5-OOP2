@@ -126,6 +126,18 @@ void GroupOfStudents::add_member(StudentCourses sc)
 	st_vec.insert(st_vec.end(), sc);
 }
 
+const Student GroupOfStudents::get_student(string id) const
+{
+	for (int i = 0; i < st_vec.size(); i++) 
+	{
+
+		if (st_vec[i].get_student().get_id() == id)
+		{
+			return st_vec[i].get_student();
+		}
+	}
+}
+
 vector<StudentCourses> GroupOfStudents::merge(vector<StudentCourses> left, vector<StudentCourses> right, int criteria) const {
 	vector<StudentCourses> ret(left.size() + right.size()); // construct vector with left.size() + right.size() elements assigned to -1
 	int left_position = 0;
