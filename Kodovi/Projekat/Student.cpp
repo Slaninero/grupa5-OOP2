@@ -8,6 +8,7 @@
 
 
 #include "Student.h"
+#include "Menu.h"
 #include <iostream>
 #include <string>
 
@@ -43,7 +44,7 @@ istream& operator>>(istream& in, Student& s)
 
 	if (in.peek() != '\n') {
 		// proverava da li je kraj reda
-		throw std::invalid_argument("Invalid input format!");
+		throw Menu::InvalidData();
 	}
 
 	return in;

@@ -10,6 +10,7 @@
 using namespace std;
 
 #include "GroupOfStudents.h"
+#include "Menu.h"
 #include <string>
 #include <fstream>
 
@@ -22,7 +23,6 @@ GroupOfStudents::GroupOfStudents(const vector<StudentCourses>& v)
 
 void GroupOfStudents::display() const
 {
-	cout << st_vec.size() << endl;
 	for (StudentCourses sc : st_vec) {
 		sc.get_student().display();
 	}
@@ -84,7 +84,8 @@ void GroupOfStudents::write_to_file()
 		// Pisanje teksta
 		ofstream ofs(path);
 
-		if (!ofs) cout << "Unable to open file!" << endl;
+		if (!ofs)
+			throw Menu::InvalidFile();
 
 		for (int i = 0; i < st_vec.size(); i++) {
 			ofs << st_vec[i];
@@ -95,7 +96,8 @@ void GroupOfStudents::write_to_file()
 		// Binarno pisanje
 		ofstream ofs(path, std::ios::binary);
 
-		if (!ofs) cout << "Unable to open file!" << endl;
+		if (!ofs)
+			throw Menu::InvalidFile();
 
 		for (int i = 0; i < st_vec.size(); i++) {
 			double final_score = st_vec[i].get_courses().get_final_score();
@@ -111,7 +113,8 @@ void GroupOfStudents::write_to_file()
 
 		ofstream ofs2(path2);
 		cout << path2 << endl;
-		if (!ofs2) cout << "Unable to open file!" << endl;
+		if (!ofs2)
+			throw Menu::InvalidFile();
 
 		for (int i = 0; i < st_vec.size(); i++) {
 			ofs2 << st_vec[i];
