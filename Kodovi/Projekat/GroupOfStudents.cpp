@@ -10,6 +10,7 @@
 using namespace std;
 
 #include "GroupOfStudents.h"
+#include "Menu.h"
 #include <string>
 #include <fstream>
 
@@ -22,7 +23,6 @@ GroupOfStudents::GroupOfStudents(const vector<StudentCourses>& v)
 
 void GroupOfStudents::display() const
 {
-	cout << st_vec.size() << endl;
 	for (StudentCourses sc : st_vec) {
 		sc.get_student().display();
 	}
@@ -62,6 +62,7 @@ void GroupOfStudents::write_to_file()
 {
 	string path;  // putanja ka fajlu za upis iste ekstenzije
 	string path2; // putanja ka fajlu za upis tekstualne ekstenzije, koristi se pri binarnom zapisu
+	vector<StudentCourses> sorted = mergeSort(st_vec, 1);
 
 	if (__argc == 4) {
 		// Ako je zadata izlazna datoteka
@@ -84,10 +85,11 @@ void GroupOfStudents::write_to_file()
 		// Pisanje teksta
 		ofstream ofs(path);
 
-		if (!ofs) cout << "Unable to open file!" << endl;
+		if (!ofs)
+			throw Menu::InvalidFile();
 
-		for (int i = 0; i < st_vec.size(); i++) {
-			ofs << st_vec[i];
+		for (int i = 0; i < sorted.size(); i++) {
+			ofs << sorted[i];
 		}
 
 		ofs.close();
@@ -95,15 +97,16 @@ void GroupOfStudents::write_to_file()
 		// Binarno pisanje
 		ofstream ofs(path, std::ios::binary);
 
-		if (!ofs) cout << "Unable to open file!" << endl;
+		if (!ofs)
+			throw Menu::InvalidFile();
 
-		for (int i = 0; i < st_vec.size(); i++) {
-			double final_score = st_vec[i].get_courses().get_final_score();
-			char grade_letter = st_vec[i].get_courses().get_letter_grade();
+		for (int i = 0; i < sorted.size(); i++) {
+			double final_score = sorted[i].get_courses().get_final_score();
+			char grade_letter = sorted[i].get_courses().get_letter_grade();
 
-			ofs.write((char*)&st_vec[i].get_student().get_id(), sizeof(st_vec[i].get_student().get_id()));                 // Zapis id-a
-			ofs.write((char*)&st_vec[i].get_student().get_first_name(), sizeof(st_vec[i].get_student().get_first_name())); // Zapis imena
-			ofs.write((char*)&st_vec[i].get_student().get_last_name(), sizeof(st_vec[i].get_student().get_last_name()));   // Zapis prezimena
+			ofs.write((char*)&sorted[i].get_student().get_id(), sizeof(sorted[i].get_student().get_id()));                 // Zapis id-a
+			ofs.write((char*)&sorted[i].get_student().get_first_name(), sizeof(sorted[i].get_student().get_first_name())); // Zapis imena
+			ofs.write((char*)&sorted[i].get_student().get_last_name(), sizeof(sorted[i].get_student().get_last_name()));   // Zapis prezimena
 			ofs.write(reinterpret_cast<char*>(&final_score), sizeof(final_score));                                         // Zapis konacnog rezulata
 			ofs.write((char*)&grade_letter, sizeof(grade_letter));                                                         // Zapis ocene
 		}
@@ -111,10 +114,11 @@ void GroupOfStudents::write_to_file()
 
 		ofstream ofs2(path2);
 		cout << path2 << endl;
-		if (!ofs2) cout << "Unable to open file!" << endl;
+		if (!ofs2)
+			throw Menu::InvalidFile();
 
-		for (int i = 0; i < st_vec.size(); i++) {
-			ofs2 << st_vec[i];
+		for (int i = 0; i < sorted.size(); i++) {
+			ofs2 << sorted[i];
 		}
 		
 		ofs2.close();
@@ -124,6 +128,18 @@ void GroupOfStudents::write_to_file()
 void GroupOfStudents::add_member(StudentCourses sc)
 {
 	st_vec.insert(st_vec.end(), sc);
+}
+
+const Student GroupOfStudents::get_student(string id) const
+{
+	for (int i = 0; i < st_vec.size(); i++) 
+	{
+
+		if (st_vec[i].get_student().get_id() == id)
+		{
+			return st_vec[i].get_student();
+		}
+	}
 }
 
 vector<StudentCourses> GroupOfStudents::merge(vector<StudentCourses> left, vector<StudentCourses> right, int criteria) const {

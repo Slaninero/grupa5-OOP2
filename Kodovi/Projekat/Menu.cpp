@@ -22,7 +22,8 @@ void write_input_file(GroupOfStudents& gs) {
 	string path = path_name + "/\\" + file_name.substr(0, file_name.find_last_of(".") + 1) + "bin"; // Konacno ime fajla
 
 	ofstream ofs(path, std::ios::binary);
-	if (!ofs) cout << "Unable to open file!" << endl;
+	if (!ofs)
+		throw Menu::InvalidFile();
 	
 	for (StudentCourses sc : gs.get_student_courses()) {
 		Student student = sc.get_student();
@@ -92,7 +93,8 @@ void Menu::read_students()
 	if (file_type == "T") {
 		ifstream ifs(path);
 
-		if (!ifs) cout << "Unable to open file!" << endl;
+		if (!ifs)
+			throw Menu::InvalidFile();
 
 		try {
 			while (!ifs.eof()) {
@@ -113,10 +115,12 @@ void Menu::read_students()
 			cout << "Invalid input data format!" << endl;
 		}
 	}
-	else {
+	else if (file_type == "B") {
 		ifstream ifs(path, std::ios::binary);
 
-		if (!ifs) cout << "Unable to open file!" << endl;
+		if (!ifs)
+			throw Menu::InvalidFile();
+
 		Student student;
 		Courses courses;
 		vector<StudentCourses> sc_v;
@@ -193,6 +197,9 @@ void Menu::read_students()
 			cout << "Invalid input data format!" << endl;
 		}
 	}
+	else {
+		throw Menu::InvalidData();
+	}
 }
 
 void Menu::display_students() const
@@ -215,3 +222,34 @@ void Menu::write()
 	gs.write_to_file();
 }
 
+void Menu::display_one_stud() const
+{
+	string id;
+	
+	cout << "Unesite id studenta >> ";
+	cin >> id;
+
+	if (is_id_valid(id) == true)
+	{
+		Student s = gs.get_student(id);
+		s.display();
+	}
+	else
+	{
+		cout << "Ne postoji student s tim id-om!" << endl;
+	}
+}
+
+bool Menu::is_id_valid(string id) const
+{
+	vector<StudentCourses> sc = gs.get_student_courses();
+
+	for (int i = 0; i < sc.size(); i++) 
+	{
+		if (sc[i].get_student().get_id() == id)
+		{
+			return true;
+		}
+	}
+	return false;
+}

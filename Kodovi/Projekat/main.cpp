@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
 				m.display_highest_score();
 				break;
 			case Menu::DISPLAY_ONE:
+				m.display_one_stud();
 				break;
 			case Menu::WRITE_FILE:
 				m.write();

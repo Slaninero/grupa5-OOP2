@@ -7,6 +7,7 @@
 //============================================================================
 
 #include "Courses.h"
+#include "Menu.h"
 #include <string>
 #include <iostream>
 
@@ -79,12 +80,12 @@ istream & operator>>(istream & in, Courses & c)
 	while (i < 6) {
 		if (!(in >> num)) {
 			// nije double
-			throw std::invalid_argument("Invalid input format!");
+			throw Menu::InvalidData();
 		}
 		else {
 			if (num < 0 || num > 100) {
 				// nalazi se izvan opsega
-				throw std::invalid_argument("Invalid input format!");
+				throw Menu::InvalidData();
 		}
 			c.homework[i] = num;
 		}
@@ -93,18 +94,18 @@ istream & operator>>(istream & in, Courses & c)
 
 	if (in.peek() != '\n') {
 		// proverava da li je kraj reda
-		throw std::invalid_argument("Invalid input fomrat!");
+		throw Menu::InvalidData();
 	}
 	
 	i = 0;
 
 	while (i < 4) {
 		if (!(in >> num)) {
-			throw std::invalid_argument("Invalid input format!");
+			throw Menu::InvalidData();
 		}
 		else {
 			if (num < 0 || num > 100) {
-				throw std::invalid_argument("Invalid input format!");
+				throw Menu::InvalidData();
 			}
 			c.test[i] = num;
 		}
@@ -112,18 +113,18 @@ istream & operator>>(istream & in, Courses & c)
 	}
 
 	if (in.peek() != '\n') {
-		throw std::invalid_argument("Invalid input fomrat!");
+		throw Menu::InvalidData();
 	}
 
 	i = 0;
 
 	while (i < 10) {
 		if (!(in >> num)) {
-			throw std::invalid_argument("Invalid input format!");
+			throw Menu::InvalidData();
 		}
 		else {
 			if (num < 0 || num > 100) {
-				throw std::invalid_argument("Invalid input format!");
+				throw Menu::InvalidData();
 			}
 			c.quiz[i] = num;
 		}
@@ -132,7 +133,7 @@ istream & operator>>(istream & in, Courses & c)
 
 	if (!in.eof() && in.peek() != '\n') {
 		// proverava da li je kraj reda
-		throw std::invalid_argument("Invalid input fomrat!");
+		throw Menu::InvalidData();
 	}
 
 	return in;
