@@ -29,6 +29,8 @@ public:
 	void display_highest() const;
 	void write_to_file();
 	const vector<StudentCourses>& get_student_courses() const { return st_vec; }
+	vector<StudentCourses> merge(vector<StudentCourses> left, vector<StudentCourses> right, int criteria) const;
+	vector<StudentCourses> mergeSort(vector<StudentCourses> vec, int criteria) const;
 	void add_member(StudentCourses sc);
 };
 

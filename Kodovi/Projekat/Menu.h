@@ -43,6 +43,7 @@ public:
 	void display_students_sorted() const;
 	void display_highest_score() const;
 	void write();
+	void write_bin_input();
 };
 
 #endif /*MENU_H_*/

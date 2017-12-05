@@ -28,8 +28,8 @@ public:
 	Courses get_courses() const { return courses; }
 	void set_courses(Courses c);
 	double get_final_score();
-	void display();
-
+	void display() const;
+	bool lessThan(StudentCourses sc, int criteria);
 	friend istream& operator>>(istream& in, StudentCourses& sc);
 };
 
