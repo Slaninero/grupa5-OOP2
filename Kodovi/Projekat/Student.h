@@ -1,6 +1,6 @@
 //============================================================================
 // File Name   : Student.h
-// Authors     : You
+// Authors     : Nemanja Jankovic
 // Version     : 1.2
 // Copyright   : Your copyright notice (if applicable)
 // Description : C++ group project

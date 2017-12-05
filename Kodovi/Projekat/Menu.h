@@ -44,6 +44,8 @@ public:
 	void display_highest_score() const;
 	void write();
 	void write_bin_input();
+	void display_one_stud() const
+		;
 };
 
 #endif /*MENU_H_*/
