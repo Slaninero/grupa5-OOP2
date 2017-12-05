@@ -19,7 +19,11 @@ class GroupOfStudents
 {
 private:
 	vector<StudentCourses> st_vec;
-	void search_for_highest(vector<int>& indices_max) const; // utility
+	bool is_sorted_ln;
+	bool is_sorted_in;
+	vector<int> sorted_last_name;
+	vector<int> sorted_index;
+	void search_for_highest(vector<int>& indices_max) const; // utility	
 
 public:
 	GroupOfStudents() {}

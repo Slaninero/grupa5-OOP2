@@ -1,12 +1,12 @@
-Katarina Sknderovic 018/2016VV
+Katarina Sknderovic VV018/2016
 5 5 5 5 5 5
 14 14 14 14
 1 2 3 4 5 6 7 8 9 10
-Nikola Petrovic 020/2016VV
+Nikola Petrovic VV020/2016
 56 45 55 54 83 95
 68 14 14 68
 1 50 3 4 5 6 7 8 9 10
-Nikola Nikolic 111/2016VV
+Nikola Nikolic VV111/2015
 0 0 0 0 0 0
 100 100 100 100
 0 0 0 0 0 0 0 0 0 0

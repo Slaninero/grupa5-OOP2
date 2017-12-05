@@ -29,6 +29,12 @@ bool StudentCourses::lessThan(StudentCourses sc, int criteria)
 {
 	string s1;
 	string s2;
+	string s3;
+	string s4;
+	string s5;
+	string s6;
+	int pos;
+	int pos2;
 	switch (criteria)
 	{
 	case 0: // prezime, ime, id
@@ -38,6 +44,14 @@ bool StudentCourses::lessThan(StudentCourses sc, int criteria)
 	case 1: // id
 		s1 = student.get_id();
 		s2 = sc.get_student().get_id();
+		pos = s1.find_last_of("/\\");
+		pos2 = s1.find_last_of("/\\");
+		s3 = s1.substr(0,pos);
+		s4 = s1.substr(pos+1);
+		s5 = s2.substr(0, pos2);
+		s6 = s2.substr(pos2 + 1);
+		s1 = s4 + s3;
+		s2 = s6 + s5;
 		break;
 	default:
 		break;
